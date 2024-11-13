@@ -3,3 +3,8 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui.html
+    displayRequestDuration: true
+    deepLinking: true
+    docExpansion: none  # Options: 'list' (expanded), 'none' (collapsed)
+    showExtensions: true
+    filter: true  # Adds a search box to filter through API endpoints

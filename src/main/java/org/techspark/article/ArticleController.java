@@ -1,6 +1,8 @@
 package org.techspark.article;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +31,9 @@ public class ArticleController {
     }
 
     @Operation(summary = "Get article by ID", description = "Fetches an article by its ID")
+    @ApiResponse(responseCode = "200", description = "Successfully found the article")
+    @ApiResponse(responseCode = "404", description = "Article not found")
+    @Parameter(name = "id", description = "ID of the article to retrieve", required = true)
     @GetMapping("/{id}")
     public Article getArticleById(@PathVariable Long id) {
         return articles.stream()
@@ -38,6 +43,11 @@ public class ArticleController {
     }
 
     @Operation(summary = "Create a new article", description = "Adds a new article to the list")
+    @ApiResponse(responseCode = "201", description = "Article created successfully")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Article object containing details of the new article",
+            required = true
+    )
     @PostMapping
     public Article createArticle(@RequestBody Article article) {
         article.setId((long) (articles.size() + 1));
