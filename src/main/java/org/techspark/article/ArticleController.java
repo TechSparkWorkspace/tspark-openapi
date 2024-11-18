@@ -3,6 +3,7 @@ package org.techspark.article;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/articles")
 @Tag(name = "Article Management", description = "CRUD operations for managing articles metadata")
+@SecurityRequirement(name = "bearerAuth")
 public class ArticleController {
     private List<Article> articles = new ArrayList<>();
 
