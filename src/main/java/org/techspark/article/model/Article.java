@@ -1,10 +1,15 @@
 package org.techspark.article.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class Article {
 
     private Long id;
+    @Schema(description = "Title of the article", example = "Sample Title")
     private String title;
+    @Schema(description = "Author of the article", example = "Unknown Author")
     private String author;
+    @Schema(description = "Content of the article", example = "Sample Content")
     private String content;
 
     // Constructors, getters, and setters
